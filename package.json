@@ -1,0 +1,14 @@
+{
+    "name": "vue-advanced-workshop",
+    "author": "Qiu Tian",
+    "description": "repo for Vue advanced workshop",
+    "scripts": {
+        "test": "jest --env node",
+        "watch": "jest --env node --watch"
+    },
+    "dependencies": {
+        "jest": "^24.8.0",
+        "jsdom": "^15.1.0",
+        "vue": "^2.6.10"
+    }
+}
