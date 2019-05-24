@@ -1,25 +1,52 @@
 <script>
     class Dep {
         constructor() {
-            // constructor
+            this.list = new Set()
+
         }
 
         depend() {
-            // depend
+            if (Dep.target) {
+                this.list.add(Dep.target)
+            }
         }
 
         notify() {
-            // notify
+            this.list.forEach(sub => sub())
         }
     }
     Dep.target = null
 
     var observe = function (obj) {
-        // observe
+        var keys = Object.keys(obj)
+        for (var i = 0; i < keys.length; i++) {
+            var key = keys[i]
+            var cache = obj[key]
+            var dep = new Dep()
+            Object.defineProperty(obj, key, {
+                get() {
+                    dep.depend()
+                    return cache
+                },
+                set(value) {
+                    var changed = cache !== value
+                    if (changed) {
+                        cache = value
+                        dep.notify()
+                    }
+                }
+            })
+        }
+        return obj
     }
 
     var autorun = function (update) {
-        // autorun
+        var target = () => {
+            Dep.target = target
+            update()
+            Dep.target = null
+        }
+        target()
     }
 
     // 这里我把 Dep 暴露给 window 方便测试
