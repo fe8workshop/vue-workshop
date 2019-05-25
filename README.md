@@ -16,7 +16,7 @@
 
 ## 事项
 
-### 在 master 和 answer 切换 git branches
+### 在 master 和 solution 切换 git branches
 
 目前有两个分支:
 - `master`: 用途类似于课前的预习材料，有一些习题供你在分享会前了解内容。
