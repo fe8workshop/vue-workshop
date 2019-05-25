@@ -41,6 +41,7 @@ var bindEventLoad = function (window, fn, done) {
         var log = window.console.log = jest.fn(() => { })
         if (window.Vue) {
             window.Vue.config.productionTip = false
+            window.Vue.config.devtools = false
         }
         fn(window, log.mock.calls, done)
     })
@@ -64,5 +65,4 @@ exports.createTestCase = function (file, callback, extra) {
     var caseName = file.replace(/\.html$/, '')
     var caseFile = path.resolve(file, `../../${testFile}`)
     runTest(caseName, caseFile, callback, extra)
-
 }
