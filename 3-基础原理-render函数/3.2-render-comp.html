@@ -3,22 +3,26 @@
 <div id="app">
     <example :ok="ok"></example>
     <!-- 别忘了 toggle 按钮的功能哟~  -->
-    <button>toggle</button>
+    <button @click="ok = !ok">toggle</button>
 </div>
 
 <script>
     var Foo = {
-        // Foo
+        render(h) {
+            return h('div', 'foo')
+        }
     }
 
     var Bar = {
-        // Bar
+        render(h) {
+            return h('div', 'bar')
+        }
     }
 
     Vue.component('example', {
         props: ['ok'],
         render(h) {
-            // render
+            return h(this.ok ? Foo : Bar)
         }
     })
 

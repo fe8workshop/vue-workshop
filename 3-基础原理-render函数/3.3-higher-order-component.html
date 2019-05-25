@@ -5,6 +5,7 @@
 </div>
 
 <script>
+    var log = console.log.bind(console)
     // mock API
     var fetchURL = function (username, callback) {
         // 这里我们叫不实现 username 转 URL 的逻辑啦
@@ -20,12 +21,30 @@
     }
 
     var withAvatarURL = function (InnerComponent) {
-        // withAvatarURL
+        var props = ['username']
+
+        var data = function () {
+            return { url: `http://via.placeholder.com/154x154` }
+        }
+
+        var created = function () {
+            fetchURL(this.username, url => {
+                this.url = url
+            })
+        }
+
+        var render = function (h) {
+            return h(InnerComponent, {
+                props: { src: this.url }
+            })
+        }
+
+        return { props, data, created, render }
     }
 
     var SmartAvatar = withAvatarURL(Avatar)
 
-    new Vue({
+    var app = new Vue({
         el: '#app',
         components: { SmartAvatar }
     })
