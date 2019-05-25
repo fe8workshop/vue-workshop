@@ -1,0 +1,19 @@
+<script src="../node_modules/vue/dist/vue.js"></script>
+
+<div id="app">
+    <counter></counter>
+    <counter></counter>
+    <counter></counter>
+    <button @click="inc">increment</button>
+</div>
+
+<script>
+    // 创建 <counter> 组件 (不接收任何 props)
+    // 所有 组件共享 同个 count state
+    // 按钮点击时， 增加所有 <counter> 组件的 count state
+
+    new Vue({
+        el: '#app',
+        // Implement this!
+    })
+</script>

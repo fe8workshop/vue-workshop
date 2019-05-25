@@ -1,0 +1,24 @@
+<script src="../node_modules/vue/dist/vue.js"></script>
+
+<div id="app">
+    <counter></counter>
+    <counter></counter>
+    <counter></counter>
+    <button @click="inc">increment</button>
+</div>
+
+<script>
+    // 效果与前两次相同，但这次我们用一个 Vue 的实例作为 状态管理的仓库
+    var state = new Vue({
+        // Implement this!
+    })
+
+    var Counter = {
+        // Implement this!
+    }
+
+    new Vue({
+        el: '#app',
+        // Implement this!
+    })
+</script>

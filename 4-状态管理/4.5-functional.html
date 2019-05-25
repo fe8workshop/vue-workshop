@@ -1,0 +1,27 @@
+<script src="../node_modules/vue/dist/vue.js"></script>
+
+<div id="app"></div>
+
+<script>
+    // 实现 createApp 的功能
+    var createApp = function ({ el, model, view, actions }) {
+        // createApp
+    }
+
+    // voila~
+    createApp({
+        el: '#app',
+        model: {
+            count: 0
+        },
+        actions: {
+            inc: ({ count }) => ({ count: count + 1 }),
+            dec: ({ count }) => ({ count: count - 1 })
+        },
+        view: (h, model, actions) => h('div', { attrs: { id: 'app' } }, [
+            model.count, ' ',
+            h('button', { on: { click: actions.inc } }, '+'),
+            h('button', { on: { click: actions.dec } }, '-')
+        ])
+    })
+</script>
