@@ -8,7 +8,8 @@
     Vue.component('example', {
         props: ['tags'],
         render(h) {
-            // render
+            var children = this.tags.map((tag, i) => h(tag, i))
+            return h('div', children)
         }
     })
 

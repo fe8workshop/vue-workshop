@@ -1,8 +1,33 @@
 <script src="../node_modules/vue/dist/vue.js"></script>
 
 <script>
+
+    var createWatcher = function ({ validate, message }) {
+        var watcher = function (value) {
+            var isValid = validate(value)
+            if (!isValid) {
+                console.log(message)
+            }
+        }
+        return watcher
+    }
+
+    var created = function () {
+        var rules = this.$options.rules
+        if (rules) {
+            var keys = Object.keys(rules)
+            keys.forEach(key => {
+                var rule = rules[key]
+                var watcher = createWatcher(rule)
+                this.$watch(key, watcher)
+            })
+        }
+    }
+
     var RulesPlugin = {
-        // RulesPlugin
+        install(Vue) {
+            Vue.mixin({ created })
+        }
     }
 
     Vue.use(RulesPlugin)
