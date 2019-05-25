@@ -1,0 +1,30 @@
+<script src="../node_modules/vue/dist/vue.js"></script>
+
+<smart-avatar username="guaxiao"></smart-avatar>
+
+<script>
+    // mock API
+    var fetchURL = function (username, callback) {
+        // 这里我们叫不实现 username 转 URL 的逻辑啦
+        // 用 setTimeout 模拟一下
+        setTimeout(() => {
+            callback('https://avatars3.githubusercontent.com/u/13295397?s=200&v=4')
+        }, 500)
+    }
+
+    var Avatar = {
+        props: ['src'],
+        template: `<img :src="src">`
+    }
+
+    var withAvatarURL = function (InnerComponent) {
+        // withAvatarURL
+    }
+
+    var SmartAvatar = withAvatarURL(Avatar)
+
+    new Vue({
+        el: '#app',
+        components: { SmartAvatar }
+    })
+</script>

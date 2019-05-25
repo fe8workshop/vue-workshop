@@ -1,0 +1,29 @@
+<script src="../node_modules/vue/dist/vue.js"></script>
+
+<div id="app">
+    <example :ok="ok"></example>
+    <!-- 别忘了 toggle 按钮的功能哟~  -->
+    <button>toggle</button>
+</div>
+
+<script>
+    var Foo = {
+        // Foo
+    }
+
+    var Bar = {
+        // Bar
+    }
+
+    Vue.component('example', {
+        props: ['ok'],
+        render(h) {
+            // render
+        }
+    })
+
+    new Vue({
+        el: '#app',
+        data: { ok: true }
+    })
+</script>
